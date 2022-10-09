@@ -1,0 +1,34 @@
+@use "@styles/partials" as *;
+
+.nav {
+	@include max-width();
+	display: flex;
+	align-items: center;
+	gap: 3rem;
+	height: 10rem;
+	border-bottom: 1px solid;
+	border-color: $c-n-grayish-blue;
+
+	&__cart {
+		margin-left: auto;
+	}
+
+	&__link {
+		font-size: 1.25rem;
+		color: $c-n-dark-grayish-blue;
+		text-decoration: none;
+		text-transform: capitalize;
+		// flex-grow: 1;
+	}
+
+	&__cart {
+		background-color: transparent;
+		border: none;
+		color: $c-n-dark-grayish-blue;
+	}
+
+	&__avatar {
+		max-width: 4rem;
+		aspect-ratio: 1;
+	}
+}

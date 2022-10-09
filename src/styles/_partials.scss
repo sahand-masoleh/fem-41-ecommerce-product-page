@@ -1,0 +1,16 @@
+$c-p-orange: hsl(26, 100%, 55%);
+$c-p-pale: hsl(25, 100%, 94%);
+
+$c-n-very-vark-blue: hsl(220, 13%, 13%);
+$c-n-dark-grayish-blue: hsl(219, 9%, 45%);
+$c-n-grayish-blue: hsl(220, 14%, 75%);
+$c-n-light-grayish-blue: hsl(223, 64%, 98%);
+$c-n-white: hsl(0, 0%, 100%);
+$c-n-black: hsl(0, 0%, -0%);
+$c-n-black-transparent: hsl(0, 0%, -0%, 0.75);
+
+$max-width: 70rem;
+@mixin max-width($max-width: $max-width) {
+	max-width: $max-width;
+	margin: 0 auto;
+}
