@@ -8,7 +8,7 @@ const links = ["collections", "men", "women", "about", "contact"];
 function Nav() {
 	const linksMap = [];
 	for (let link of links) {
-		linksMap.push(<NavLink text={link} />);
+		linksMap.push(<NavLink key={link} text={link} />);
 	}
 	return (
 		<nav className="nav">

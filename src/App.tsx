@@ -3,12 +3,16 @@ import "@styles/common.scss";
 import "./App.scss";
 
 import Nav from "@components/Nav/Nav";
+import Gallery from "@components/Gallery/Gallery";
 
 function App() {
 	return (
-		<main className="App">
+		<>
 			<Nav />
-		</main>
+			<main className="app">
+				<Gallery />
+			</main>
+		</>
 	);
 }
 

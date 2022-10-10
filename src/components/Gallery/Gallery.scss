@@ -1,0 +1,11 @@
+@use "@styles/partials" as *;
+
+.gallery {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 50%;
+
+	&__thumbnail-container {
+		display: flex;
+	}
+}
