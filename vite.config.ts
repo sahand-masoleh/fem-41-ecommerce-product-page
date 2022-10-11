@@ -9,6 +9,10 @@ export default defineConfig({
 	resolve: {
 		alias: [
 			{
+				find: "@root",
+				replacement: path.resolve(__dirname, "./src"),
+			},
+			{
 				find: "@components",
 				replacement: path.resolve(__dirname, "./src/components"),
 			},
@@ -19,6 +23,10 @@ export default defineConfig({
 			{
 				find: "@assets",
 				replacement: path.resolve(__dirname, "./src/assets"),
+			},
+			{
+				find: "@contexts",
+				replacement: path.resolve(__dirname, "./src/contexts"),
 			},
 		],
 	},

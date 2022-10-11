@@ -1,6 +1,7 @@
 @use "@styles/partials" as *;
 
 .gallery {
+	@include max-width();
 	display: flex;
 	flex-direction: column;
 	flex-basis: 50%;

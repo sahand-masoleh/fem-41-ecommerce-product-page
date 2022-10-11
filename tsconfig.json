@@ -18,9 +18,11 @@
 		"strictNullChecks": true,
 		"jsx": "react-jsx",
 		"paths": {
-			"@components/*": ["./src/components*"],
+			"@root/*": ["./src/*"],
+			"@components/*": ["./src/components/*"],
 			"@styles/*": ["./src/styles/*"],
-			"@assets/*": ["./src/assets/*"]
+			"@assets/*": ["./src/assets/*"],
+			"@contexts/*": ["./src/contexts/*"]
 		}
 	},
 	"include": ["src"],
