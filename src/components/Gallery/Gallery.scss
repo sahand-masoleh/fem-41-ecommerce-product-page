@@ -1,10 +1,9 @@
 @use "@styles/partials" as *;
 
 .gallery {
-	@include max-width();
+	max-width: 30rem;
 	display: flex;
 	flex-direction: column;
-	flex-basis: 50%;
 
 	&__thumbnail-container {
 		display: flex;

@@ -4,8 +4,18 @@ import { CartContext, CartContextType } from "@contexts/CartContext";
 import { products } from "@root/productList";
 import { ReactComponent as CartIcon } from "@assets/icon-cart.svg";
 
-const PRICE = 125;
 const PRODUCT = products[0];
+
+const priceFormatter = new Intl.NumberFormat("en-US", {
+	style: "currency",
+	currency: "USD",
+});
+const PRICE = priceFormatter.format(PRODUCT.price * PRODUCT.discount);
+const ORG_PRICE = priceFormatter.format(PRODUCT.price);
+
+const DISCOUNT = new Intl.NumberFormat("en-US", { style: "percent" }).format(
+	PRODUCT.discount
+);
 
 function Description() {
 	const { handleCart } = useContext(CartContext);
@@ -33,11 +43,9 @@ function Description() {
 			<h2 className="description__product">{PRODUCT.name}</h2>
 			<p className="description__text">{PRODUCT.description}</p>
 			<span className="description__price price">
-				<span className="price__current">
-					{PRODUCT.price * PRODUCT.discount}
-				</span>
-				<span className="price__discount">{PRODUCT.discount * 100}</span>
-				<span className="price__previous">{PRODUCT.price}</span>
+				<span className="price__current">{PRICE}</span>
+				<span className="price__discount">{DISCOUNT}</span>
+				<span className="price__org">{ORG_PRICE}</span>
 			</span>
 			<div className="description__button-container">
 				<div className="description__quantity quantity">

@@ -9,13 +9,16 @@ import { CartContextProvider } from "@contexts/CartContext";
 
 function App() {
 	return (
-		<CartContextProvider>
-			<Nav />
-			<main className="app">
-				<Gallery />
-				<Description />
-			</main>
-		</CartContextProvider>
+		<div className="app">
+			<CartContextProvider>
+				<Nav />
+				<main className="main">
+					<Gallery />
+					<div className="main__spacer"></div>
+					<Description />
+				</main>
+			</CartContextProvider>
+		</div>
 	);
 }
 

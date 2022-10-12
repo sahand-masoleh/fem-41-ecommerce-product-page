@@ -1,3 +1,4 @@
+@use "@styles/partials" as *;
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400..700&display=swap");
 
 * {
@@ -5,5 +6,16 @@
 }
 
 .app {
+	padding: 0 1rem;
+}
+
+.main {
+	@include max-width();
 	display: flex;
+	padding-top: 5rem;
+
+	&__spacer {
+		min-width: 2rem;
+		flex-grow: 1;
+	}
 }
