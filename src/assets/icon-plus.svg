@@ -1,1 +1,45 @@
-<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M12 7.023V4.977a.641.641 0 0 0-.643-.643h-3.69V.643A.641.641 0 0 0 7.022 0H4.977a.641.641 0 0 0-.643.643v3.69H.643A.641.641 0 0 0 0 4.978v2.046c0 .356.287.643.643.643h3.69v3.691c0 .356.288.643.644.643h2.046a.641.641 0 0 0 .643-.643v-3.69h3.691A.641.641 0 0 0 12 7.022Z" id="b"/></defs><use fill="#FF7E1B" fill-rule="nonzero" xlink:href="#b"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   id="svg192"
+   sodipodi:docname="icon-plus.svg"
+   width="12.000032"
+   height="12.001016"
+   inkscape:version="1.2.1 (0f2f062aeb, 2022-09-21, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview194"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="4.3666667"
+     inkscape:cx="150"
+     inkscape:cy="75"
+     inkscape:window-width="1878"
+     inkscape:window-height="1016"
+     inkscape:window-x="42"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg192" />
+  <defs
+     id="defs188">
+    <path
+       d="M 12,7.023 V 4.977 A 0.641,0.641 0 0 0 11.357,4.334 H 7.667 V 0.643 A 0.641,0.641 0 0 0 7.022,0 H 4.977 A 0.641,0.641 0 0 0 4.334,0.643 v 3.69 H 0.643 A 0.641,0.641 0 0 0 0,4.978 V 7.024 C 0,7.38 0.287,7.667 0.643,7.667 h 3.69 v 3.691 c 0,0.356 0.288,0.643 0.644,0.643 h 2.046 a 0.641,0.641 0 0 0 0.643,-0.643 v -3.69 h 3.691 A 0.641,0.641 0 0 0 12,7.022 Z"
+       id="b" />
+  </defs>
+  <use
+     fill="currentColor"
+     fill-rule="nonzero"
+     xlink:href="#b"
+     id="use190"
+     transform="translate(1.2500343e-5,1.2500343e-5)" />
+</svg>

@@ -3,6 +3,8 @@ import { useContext, useState } from "react";
 import { CartContext, CartContextType } from "@contexts/CartContext";
 import { products } from "@root/productList";
 import { ReactComponent as CartIcon } from "@assets/icon-cart.svg";
+import { ReactComponent as MinusIcon } from "@assets/icon-minus.svg";
+import { ReactComponent as PlusIcon } from "@assets/icon-plus.svg";
 
 const PRODUCT = products[0];
 
@@ -18,7 +20,8 @@ const DISCOUNT = new Intl.NumberFormat("en-US", { style: "percent" }).format(
 );
 
 function Description() {
-	const { handleCart } = useContext(CartContext);
+	const { handleCart } =
+		useContext<CartContextType | undefined>(CartContext) || {};
 
 	const [quantity, setQuantity] = useState(0);
 
@@ -34,7 +37,7 @@ function Description() {
 	}
 
 	function handleAdd() {
-		handleCart(quantity);
+		handleCart && handleCart(quantity);
 	}
 
 	return (
@@ -50,17 +53,19 @@ function Description() {
 			<div className="description__button-container">
 				<div className="description__quantity quantity">
 					<button
-						className="quantity__button"
+						className="quantity__button image"
 						onClick={() => handleQuantity(-1)}
 					>
-						-
+						<MinusIcon className="image__img" />
 					</button>
 					<span className="quantity__number">{quantity}</span>
 					<button
 						className="quantity__button"
 						onClick={() => handleQuantity(1)}
 					>
-						+
+						<div className="quantity__icon image">
+							<PlusIcon className="image__img" />
+						</div>
 					</button>
 				</div>
 				<button className="description__add add" onClick={handleAdd}>

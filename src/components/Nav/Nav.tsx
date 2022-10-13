@@ -25,10 +25,12 @@ function Nav() {
 			<div className="nav__logo image">
 				<Logo className="image__img" />
 			</div>
+			<div className="nav__spacer"></div>
 			{linksMap}
 			<button className="nav__cart image" onClick={handleOpen}>
 				<CartIcon className="image__img" />
 			</button>
+			<div className="nav__spacer"></div>
 			<div className="nav__avatar image">
 				<img
 					src="./images/image-avatar.png"
@@ -45,13 +47,17 @@ export default Nav;
 
 function NavLink({ text }: { text: string }) {
 	return (
-		<a href="#" className="nav__link">
-			{text}
-		</a>
+		<>
+			<a href="#" className="nav__link">
+				{text}
+			</a>
+			<div className="nav__spacer"></div>
+		</>
 	);
 }
 
 function Cart() {
-	const { quantity } = useContext(CartContext);
+	const { quantity } =
+		useContext<CartContextType | undefined>(CartContext) || {};
 	return <div>{quantity}</div>;
 }

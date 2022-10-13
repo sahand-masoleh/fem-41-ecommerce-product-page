@@ -1,31 +1,33 @@
 @use "@styles/partials" as *;
 
 .description {
-	flex-basis: 30rem;
-	padding-top: 5rem;
+	flex-basis: 28rem;
 
 	&__company {
 		text-transform: uppercase;
-		font-size: 1.1rem;
+		font-size: 0.8rem;
 		letter-spacing: 0.25ch;
 		color: $c-p-orange;
-		margin-bottom: 2ch;
+		margin-bottom: 1rem;
 	}
 
 	&__product {
 		text-transform: capitalize;
 		font-size: 2.8rem;
 		color: $c-n-very-vark-blue;
-		line-height: 1.5ch;
-		margin-bottom: 2ch;
+		line-height: 1.8ch;
+		margin-bottom: 2rem;
 	}
 
 	&__text {
 		color: $c-n-dark-grayish-blue;
+		margin-bottom: 2rem;
 	}
 
 	&__button-container {
 		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
 	}
 }
 
@@ -34,10 +36,10 @@
 	flex-wrap: wrap;
 	align-items: center;
 	column-gap: 2ch;
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
 
 	&__current {
-		font-size: 2rem;
+		font-size: 1.8rem;
 		font-weight: 800;
 	}
 
@@ -57,21 +59,74 @@
 
 .quantity {
 	background-color: $c-n-light-grayish-blue;
-	min-width: 8rem;
+	flex-grow: 1;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 3rem;
+	height: 3.5rem;
 	padding: 0 1ch;
+	border-radius: 0.5rem;
 
 	&__button {
-		background-color: transparent;
 		border: none;
+		background-color: transparent;
 		color: $c-p-orange;
-		height: 2rem;
+		padding: 0 0.5rem;
+		height: 100%;
+		min-width: 2rem;
+		flex-grow: 1;
+		display: grid;
+		align-items: center;
+
+		&:first-of-type {
+			justify-items: left;
+		}
+
+		&:last-of-type {
+			justify-items: right;
+		}
+
+		cursor: pointer;
+		&:hover {
+			opacity: 0.5;
+		}
 	}
 
 	&__number {
 		font-weight: 800;
+		width: 2ch;
+		background-color: re;
+		text-align: center;
+	}
+}
+
+.add {
+	flex-grow: 2;
+	height: 3.5rem;
+	border: none;
+	background-color: $c-p-orange;
+	border-radius: 0.5rem;
+	color: $c-n-white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	box-shadow: 0 2rem 1rem $c-p-pale;
+	padding: 0 1ch;
+
+	&:hover {
+		opacity: 0.5;
+	}
+
+	&__icon {
+		width: 1.5rem;
+	}
+
+	&__text {
+		font-size: 1rem;
+		font-weight: 800;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 }

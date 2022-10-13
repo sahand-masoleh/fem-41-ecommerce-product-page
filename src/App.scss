@@ -10,8 +10,9 @@
 }
 
 .main {
-	@include max-width();
+	@include max-width(65rem);
 	display: flex;
+	align-items: center;
 	padding-top: 5rem;
 
 	&__spacer {

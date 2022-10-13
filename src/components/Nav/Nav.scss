@@ -4,21 +4,24 @@
 	@include max-width();
 	display: flex;
 	align-items: center;
-	gap: 3rem;
-	height: 10rem;
+	height: 7rem;
 	border-bottom: 1px solid;
-	border-color: $c-n-grayish-blue;
+	border-color: $c-n-light-grayish-blue;
+
+	&__logo {
+		flex-shrink: 0;
+	}
 
 	&__cart {
 		margin-left: auto;
+		flex-shrink: 0;
 	}
 
 	&__link {
-		font-size: 1.25rem;
+		font-size: 1rem;
 		color: $c-n-dark-grayish-blue;
 		text-decoration: none;
 		text-transform: capitalize;
-		// flex-grow: 1;
 	}
 
 	&__cart {
@@ -28,7 +31,14 @@
 	}
 
 	&__avatar {
-		max-width: 4rem;
+		max-width: 3rem;
 		aspect-ratio: 1;
+		flex-shrink: 0;
+	}
+
+	&__spacer {
+		max-width: 2.5rem;
+		min-width: 0.5rem;
+		flex-grow: 1;
 	}
 }

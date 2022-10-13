@@ -34,12 +34,14 @@ function Gallery() {
 				key={i}
 				url={images[i].thumbnail}
 				onClick={() => handleActive(i)}
+				isActive={i === active}
+				isLast={i === images.length - 1}
 			/>
 		);
 	}
 	return (
 		<section className="gallery">
-			<div className="active image">
+			<div className="gallery__active image">
 				<img src={images[active].large} alt="" className="image__img" />
 			</div>
 			<div className="gallery__thumbnail-container">{imagesMap}</div>
@@ -52,12 +54,22 @@ export default Gallery;
 interface Props {
 	url: string;
 	onClick: () => void;
+	isActive: boolean;
+	isLast: boolean;
 }
 
-function Thumbnail({ url, onClick }: Props) {
+function Thumbnail({ url, onClick, isActive, isLast }: Props) {
 	return (
-		<div className="gallery__thumbnail" onClick={onClick}>
-			<img src={url} alt="product thumbnail" className="image__img" />
-		</div>
+		<>
+			<div
+				className={`gallery__thumbnail gallery__thumbnail--${
+					isActive ? "active" : "inactive"
+				}`}
+				onClick={onClick}
+			>
+				<img src={url} alt="product thumbnail" className="image__img" />
+			</div>
+			{!isLast && <div className="gallery__spacer"></div>}
+		</>
 	);
 }
