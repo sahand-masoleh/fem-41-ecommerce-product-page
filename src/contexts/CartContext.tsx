@@ -13,7 +13,11 @@ export function CartContextProvider({ children }: { children: JSX.Element[] }) {
 	const [quantity, setQuantity] = useState(0);
 
 	function handleCart(num: number) {
-		setQuantity((prev) => prev + num);
+		if (num < 0) {
+			setQuantity(0);
+		} else {
+			setQuantity((prev) => prev + num);
+		}
 	}
 
 	return (

@@ -7,13 +7,9 @@
 	height: 7rem;
 	border-bottom: 1px solid;
 	border-color: $c-n-light-grayish-blue;
+	position: relative;
 
 	&__logo {
-		flex-shrink: 0;
-	}
-
-	&__cart {
-		margin-left: auto;
 		flex-shrink: 0;
 	}
 
@@ -25,20 +21,52 @@
 	}
 
 	&__cart {
+		margin-left: auto;
+		flex-shrink: 0;
 		background-color: transparent;
 		border: none;
 		color: $c-n-dark-grayish-blue;
+		cursor: pointer;
+		position: relative;
+
+		&:hover {
+			color: $c-n-very-vark-blue;
+		}
+
+		&::after {
+			position: absolute;
+			content: attr(data-count);
+			font-size: 0.66rem;
+			font-weight: 600;
+			background-color: $c-p-orange;
+			padding: 0 1ch;
+			border-radius: 1rem;
+			color: $c-n-white;
+			top: -25%;
+			right: 0;
+		}
 	}
 
 	&__avatar {
 		max-width: 3rem;
 		aspect-ratio: 1;
 		flex-shrink: 0;
+		border-radius: 50%;
+		cursor: pointer;
+
+		&:hover {
+			outline: 2px solid $c-p-orange;
+		}
 	}
 
 	&__spacer {
 		max-width: 2.5rem;
 		min-width: 0.5rem;
+		flex-grow: 1;
+	}
+
+	&__menu {
+		display: flex;
 		flex-grow: 1;
 	}
 }

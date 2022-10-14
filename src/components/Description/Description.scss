@@ -76,7 +76,7 @@
 		min-width: 2rem;
 		flex-grow: 1;
 		display: grid;
-		align-items: center;
+		align-content: center;
 
 		&:first-of-type {
 			justify-items: left;
@@ -113,6 +113,7 @@
 	gap: 1rem;
 	box-shadow: 0 2rem 1rem $c-p-pale;
 	padding: 0 1ch;
+	cursor: pointer;
 
 	&:hover {
 		opacity: 0.5;

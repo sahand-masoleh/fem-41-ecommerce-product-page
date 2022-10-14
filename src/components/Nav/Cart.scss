@@ -1,0 +1,106 @@
+@use "@styles/partials" as *;
+
+.cart-wrapper {
+	@include max-width(80rem);
+	position: absolute;
+	inset: 0;
+	padding: 0 1rem;
+	cursor: pointer;
+}
+
+.cart {
+	margin-top: 6rem;
+	margin-left: auto;
+	max-width: 22rem;
+	width: 100%;
+	background-color: $c-n-white;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding: 1.5rem;
+	box-shadow: 0 1rem 2rem $c-n-grayish-blue;
+	border-radius: 0.5rem;
+	cursor: default;
+
+	&__title {
+		font-size: 1rem;
+		font-weight: 800;
+		text-transform: capitalize;
+		color: $c-n-very-vark-blue;
+	}
+
+	&__divider {
+		width: calc(100% + 3rem);
+		align-self: center;
+		color: $c-n-grayish-blue;
+		border-width: 1px 1px 0 0;
+	}
+
+	&__item-container {
+		display: grid;
+		grid-template-areas:
+			"image product product delete"
+			"image current total delete";
+		grid-template-columns: 3rem auto 1fr 1rem;
+		column-gap: 1rem;
+		align-items: center;
+		height: 3rem;
+	}
+
+	&__image {
+		grid-area: image;
+		border-radius: 0.5rem;
+		overflow: hidden;
+		height: min-content;
+		place-self: center;
+	}
+
+	&__product {
+		grid-area: product;
+		font-size: 0.95rem;
+		font-weight: 400;
+		color: $c-n-dark-grayish-blue;
+		text-transform: capitalize;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	&__total {
+		font-weight: 800;
+	}
+
+	&__delete {
+		grid-area: delete;
+		padding: 0;
+		background-color: transparent;
+		color: $c-n-grayish-blue;
+		border: none;
+		cursor: pointer;
+
+		&:hover {
+			color: $c-n-very-vark-blue;
+		}
+	}
+
+	&__checkout {
+		background-color: $c-p-orange;
+		padding: 1rem;
+		border: none;
+		border-radius: 0.5rem;
+		color: $c-n-white;
+		text-transform: capitalize;
+		font-weight: 800;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+
+	&__empty {
+		margin: 3rem auto;
+		color: $c-n-dark-grayish-blue;
+		font-weight: 800;
+	}
+}
