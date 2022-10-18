@@ -14,8 +14,7 @@
 	}
 
 	&__link {
-		font-size: 1rem;
-		color: $c-n-dark-grayish-blue;
+		color: inherit;
 		text-decoration: none;
 		text-transform: capitalize;
 	}
@@ -65,8 +64,68 @@
 		flex-grow: 1;
 	}
 
-	&__menu {
+	&__menu-desktop {
 		display: flex;
 		flex-grow: 1;
+		color: $c-n-dark-grayish-blue;
+		font-size: 1rem;
+
+		@media screen and (max-width: $tablet) {
+			display: none;
+		}
+	}
+
+	&__open {
+		display: none;
+		@media screen and (max-width: $tablet) {
+			display: inline-block;
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
+			max-width: 3rem;
+			min-width: 2rem;
+			width: 100%;
+		}
+	}
+}
+
+.menu {
+	display: none;
+
+	@media screen and (max-width: $tablet) {
+		z-index: 100;
+		position: fixed;
+		inset: 0 auto 0 0;
+		background-color: $c-n-white;
+		max-width: 15rem;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		padding: 0 1.5rem;
+		font-size: 1.1rem;
+		font-weight: 800;
+		color: $c-n-black;
+	}
+
+	&__close {
+		background-color: transparent;
+		border: none;
+		width: 1.5rem;
+		height: 7rem;
+		margin-bottom: -1.5rem;
+		display: grid;
+		align-content: center;
+		cursor: pointer;
+	}
+
+	&__background {
+		@media screen and (max-width: $tablet) {
+			z-index: 99;
+			position: fixed;
+			opacity: 0.5;
+			inset: 0;
+			background-color: $c-n-very-vark-blue;
+		}
 	}
 }

@@ -1,33 +1,47 @@
 /// <reference types="vite-plugin-svgr/client" />
 import "./Nav.scss";
 import { useContext, useState } from "react";
+import { createPortal } from "react-dom";
 import { CartContext, CartContextType } from "@root/contexts/CartContext";
 import Cart from "./Cart";
 import { ReactComponent as Logo } from "@assets/logo.svg";
 import { ReactComponent as CartIcon } from "@assets/icon-cart.svg";
+import { ReactComponent as MenuIcon } from "@assets/icon-menu.svg";
+import { ReactComponent as CloseIcon } from "@assets/icon-close.svg";
 
 const LINKS = ["collections", "men", "women", "about", "contact"];
 
 function Nav() {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isCartOpen, setIsCartOpen] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(true);
+
 	const { quantity } =
 		useContext<CartContextType | undefined>(CartContext) || {};
 
 	function handleOpen() {
-		setIsOpen((prev) => !prev);
+		setIsCartOpen((prev) => !prev);
 	}
 
-	const linksMap = [];
+	const linksMapDesktop = [];
 	for (let link of LINKS) {
-		linksMap.push(<NavLink key={link} text={link} />);
+		linksMapDesktop.push(
+			<>
+				<NavLink key={link} text={link} />
+				<div className="nav__spacer"></div>
+			</>
+		);
 	}
+
 	return (
 		<nav className="nav">
+			<button className="nav__open image" onClick={() => setIsMenuOpen(true)}>
+				<MenuIcon className="image__img" />
+			</button>
 			<div className="nav__logo image">
 				<Logo className="image__img" />
 			</div>
 			<div className="nav__spacer"></div>
-			<div className="nav__menu">{linksMap}</div>
+			<div className="nav__menu-desktop">{linksMapDesktop}</div>
 			<button
 				className="nav__cart image"
 				onClick={handleOpen}
@@ -43,7 +57,8 @@ function Nav() {
 					className="image__img"
 				/>
 			</div>
-			{isOpen && <Cart handleOpen={handleOpen} />}
+			{isCartOpen && <Cart handleOpen={handleOpen} />}
+			{isMenuOpen && <MobileMenu handleClose={() => setIsMenuOpen(false)} />}
 		</nav>
 	);
 }
@@ -52,11 +67,31 @@ export default Nav;
 
 function NavLink({ text }: { text: string }) {
 	return (
+		<a href="#" className="nav__link">
+			{text}
+		</a>
+	);
+}
+
+interface Props {
+	handleClose: () => void;
+}
+
+function MobileMenu({ handleClose }: Props) {
+	const linksMapMobile = [];
+	for (let link of LINKS) {
+		linksMapMobile.push(<NavLink key={link} text={link} />);
+	}
+	return createPortal(
 		<>
-			<a href="#" className="nav__link">
-				{text}
-			</a>
-			<div className="nav__spacer"></div>
-		</>
+			<div className="menu">
+				<button className="menu__close image" onClick={handleClose}>
+					<CloseIcon className="image__img" />
+				</button>
+				{linksMapMobile}
+			</div>
+			<div className="menu__background" onClick={handleClose}></div>
+		</>,
+		document.body
 	);
 }
