@@ -1,5 +1,6 @@
 import "./Gallery.scss";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { products } from "@root/productList";
 const PRODUCT = products[0];
 
@@ -25,7 +26,11 @@ function Gallery() {
 	return (
 		<section className="gallery">
 			<div className="gallery__active image">
-				<img src={PRODUCT.images[active].large} alt="" className="image__img" />
+				<motion.img
+					src={PRODUCT.images[active].large}
+					alt=""
+					className="image__img"
+				/>
 			</div>
 			<div className="gallery__thumbnail-container">{imagesMap}</div>
 		</section>

@@ -101,6 +101,10 @@
 		height: 100%;
 		aspect-ratio: 1;
 
+		&:disabled {
+			opacity: 0.5;
+		}
+
 		&:first-of-type {
 			justify-items: left;
 		}
@@ -109,8 +113,8 @@
 			justify-items: right;
 		}
 
-		cursor: pointer;
-		&:hover {
+		&:hover:not(:disabled) {
+			cursor: pointer;
 			opacity: 0.5;
 		}
 	}
@@ -136,10 +140,14 @@
 	gap: 1rem;
 	box-shadow: 0 2rem 1rem $c-p-pale;
 	padding: 0 1ch;
-	cursor: pointer;
 
-	&:hover {
+	&:disabled {
 		opacity: 0.5;
+	}
+
+	&:not(:disabled):hover {
+		cursor: pointer;
+		// opacity: 0.5;
 	}
 
 	&__icon {

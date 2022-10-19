@@ -1,19 +1,19 @@
 /// <reference types="vite-plugin-svgr/client" />
 import "./Nav.scss";
 import { useContext, useState } from "react";
-import { createPortal } from "react-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { CartContext, CartContextType } from "@root/contexts/CartContext";
+import links from "./links";
 import Cart from "./Cart";
+import MobileMenu from "./MobileMenu";
 import { ReactComponent as Logo } from "@assets/logo.svg";
 import { ReactComponent as CartIcon } from "@assets/icon-cart.svg";
 import { ReactComponent as MenuIcon } from "@assets/icon-menu.svg";
-import { ReactComponent as CloseIcon } from "@assets/icon-close.svg";
-
-const LINKS = ["collections", "men", "women", "about", "contact"];
 
 function Nav() {
 	const [isCartOpen, setIsCartOpen] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [hovered, setHovered] = useState<string | null>(null);
 
 	const { quantity } =
 		useContext<CartContextType | undefined>(CartContext) || {};
@@ -22,11 +22,24 @@ function Nav() {
 		setIsCartOpen((prev) => !prev);
 	}
 
+	function handleHover(link: string | null) {
+		if (link) {
+			setHovered(link);
+		} else {
+			setHovered(null);
+		}
+	}
+
 	const linksMapDesktop = [];
-	for (let link of LINKS) {
+	for (let link of links) {
 		linksMapDesktop.push(
 			<>
-				<NavLink key={link} text={link} />
+				<NavLink
+					key={link}
+					text={link}
+					isHovered={hovered === link}
+					onHover={() => handleHover(link)}
+				/>
 				<div className="nav__spacer"></div>
 			</>
 		);
@@ -34,7 +47,10 @@ function Nav() {
 
 	return (
 		<nav className="nav">
-			<button className="nav__open image" onClick={() => setIsMenuOpen(true)}>
+			<button
+				className="nav__hamburger image"
+				onClick={() => setIsMenuOpen(true)}
+			>
 				<MenuIcon className="image__img" />
 			</button>
 			<div className="nav__spacer"></div>
@@ -42,7 +58,9 @@ function Nav() {
 				<Logo className="image__img" />
 			</div>
 			<div className="nav__spacer"></div>
-			<div className="nav__menu-desktop">{linksMapDesktop}</div>
+			<div className="nav__menu" onMouseLeave={() => handleHover(null)}>
+				{linksMapDesktop}
+			</div>
 			<button
 				className="nav__cart image"
 				onClick={handleOpen}
@@ -66,33 +84,29 @@ function Nav() {
 
 export default Nav;
 
-function NavLink({ text }: { text: string }) {
-	return (
-		<a href="#" className="nav__link">
-			{text}
-		</a>
-	);
-}
-
 interface Props {
-	handleClose: () => void;
+	text: string;
+	isHovered: boolean;
+	onHover: () => void;
 }
 
-function MobileMenu({ handleClose }: Props) {
-	const linksMapMobile = [];
-	for (let link of LINKS) {
-		linksMapMobile.push(<NavLink key={link} text={link} />);
-	}
-	return createPortal(
-		<>
-			<div className="menu">
-				<button className="menu__close image" onClick={handleClose}>
-					<CloseIcon className="image__img" />
-				</button>
-				{linksMapMobile}
-			</div>
-			<div className="menu__background" onClick={handleClose}></div>
-		</>,
-		document.body
+function NavLink({ text, isHovered, onHover }: Props) {
+	return (
+		<div className="nav__link-wrapper">
+			<a href="#" className="nav__link" onMouseEnter={onHover}>
+				{text}
+			</a>
+			<AnimatePresence>
+				{isHovered ? (
+					<motion.div
+						className="nav__underline"
+						layoutId="underline"
+						key="underline"
+						exit={{ opacity: 0 }}
+						transition={{ duration: 0.2 }}
+					></motion.div>
+				) : null}
+			</AnimatePresence>
+		</div>
 	);
 }

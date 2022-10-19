@@ -1,5 +1,6 @@
 import "./Description.scss";
 import { useContext, useState } from "react";
+import { motion } from "framer-motion";
 import { CartContext, CartContextType } from "@contexts/CartContext";
 import { products } from "@root/productList";
 import { ReactComponent as CartIcon } from "@assets/icon-cart.svg";
@@ -55,6 +56,7 @@ function Description() {
 					<button
 						className="quantity__button image"
 						onClick={() => handleQuantity(-1)}
+						disabled={quantity < 1}
 					>
 						<MinusIcon className="image__img" />
 					</button>
@@ -68,12 +70,17 @@ function Description() {
 						</div>
 					</button>
 				</div>
-				<button className="description__add add" onClick={handleAdd}>
+				<motion.button
+					className="description__add add"
+					onClick={handleAdd}
+					disabled={quantity < 1}
+					whileTap={{ scale: 0.95 }}
+				>
 					<div className="add__icon image">
 						<CartIcon className="image__img" />
 					</div>
 					<span className="add__text">Add to cart</span>
-				</button>
+				</motion.button>
 			</div>
 		</section>
 	);
