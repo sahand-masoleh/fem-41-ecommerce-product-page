@@ -13,7 +13,7 @@ const LINKS = ["collections", "men", "women", "about", "contact"];
 
 function Nav() {
 	const [isCartOpen, setIsCartOpen] = useState(false);
-	const [isMenuOpen, setIsMenuOpen] = useState(true);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	const { quantity } =
 		useContext<CartContextType | undefined>(CartContext) || {};
@@ -37,6 +37,7 @@ function Nav() {
 			<button className="nav__open image" onClick={() => setIsMenuOpen(true)}>
 				<MenuIcon className="image__img" />
 			</button>
+			<div className="nav__spacer"></div>
 			<div className="nav__logo image">
 				<Logo className="image__img" />
 			</div>
@@ -45,7 +46,7 @@ function Nav() {
 			<button
 				className="nav__cart image"
 				onClick={handleOpen}
-				data-count={quantity}
+				data-count={quantity || null}
 			>
 				<CartIcon className="image__img" />
 			</button>

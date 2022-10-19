@@ -1,24 +1,7 @@
-import { useState } from "react";
 import "./Gallery.scss";
-
-const images = [
-	{
-		thumbnail: "./images/image-product-1-thumbnail.jpg",
-		large: "./images/image-product-1.jpg",
-	},
-	{
-		thumbnail: "./images/image-product-2-thumbnail.jpg",
-		large: "./images/image-product-2.jpg",
-	},
-	{
-		thumbnail: "./images/image-product-3-thumbnail.jpg",
-		large: "./images/image-product-3.jpg",
-	},
-	{
-		thumbnail: "./images/image-product-4-thumbnail.jpg",
-		large: "./images/image-product-4.jpg",
-	},
-];
+import { useState } from "react";
+import { products } from "@root/productList";
+const PRODUCT = products[0];
 
 function Gallery() {
 	const [active, setActive] = useState(0);
@@ -28,21 +11,21 @@ function Gallery() {
 	}
 
 	const imagesMap = [];
-	for (let i = 0; i < images.length; i++) {
+	for (let i = 0; i < PRODUCT.images.length; i++) {
 		imagesMap.push(
 			<Thumbnail
 				key={i}
-				url={images[i].thumbnail}
+				url={PRODUCT.images[i].thumbnail}
 				onClick={() => handleActive(i)}
 				isActive={i === active}
-				isLast={i === images.length - 1}
+				isLast={i === PRODUCT.images.length - 1}
 			/>
 		);
 	}
 	return (
 		<section className="gallery">
 			<div className="gallery__active image">
-				<img src={images[active].large} alt="" className="image__img" />
+				<img src={PRODUCT.images[active].large} alt="" className="image__img" />
 			</div>
 			<div className="gallery__thumbnail-container">{imagesMap}</div>
 		</section>

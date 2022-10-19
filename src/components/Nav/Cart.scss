@@ -5,7 +5,6 @@
 	position: absolute;
 	inset: 0;
 	padding: 0 1rem;
-	cursor: pointer;
 }
 
 .cart {
@@ -18,9 +17,13 @@
 	flex-direction: column;
 	gap: 1.5rem;
 	padding: 1.5rem;
-	box-shadow: 0 1rem 2rem $c-n-grayish-blue;
+	box-shadow: 0 1rem 2rem #00000040;
 	border-radius: 0.5rem;
 	cursor: default;
+
+	@media screen and (max-width: $tablet) {
+		margin-top: 5rem;
+	}
 
 	&__title {
 		font-size: 1rem;
@@ -43,8 +46,7 @@
 			"image current total delete";
 		grid-template-columns: 3rem auto 1fr 1rem;
 		column-gap: 1rem;
-		align-items: center;
-		height: 3rem;
+		min-height: 3rem;
 	}
 
 	&__image {
@@ -61,13 +63,15 @@
 		font-weight: 400;
 		color: $c-n-dark-grayish-blue;
 		text-transform: capitalize;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+	}
+
+	&__current {
+		color: $c-n-dark-grayish-blue;
 	}
 
 	&__total {
 		font-weight: 800;
+		color: $c-n-very-vark-blue;
 	}
 
 	&__delete {
@@ -76,6 +80,7 @@
 		background-color: transparent;
 		color: $c-n-grayish-blue;
 		border: none;
+		align-self: center;
 		cursor: pointer;
 
 		&:hover {

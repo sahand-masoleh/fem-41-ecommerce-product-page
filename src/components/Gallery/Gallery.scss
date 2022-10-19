@@ -6,16 +6,32 @@
 	flex-direction: column;
 	gap: 2rem;
 
+	@media screen and (max-width: $tablet) {
+		flex-basis: unset;
+		margin: 0 -1.5rem;
+	}
+
 	&__active {
 		border-radius: 1rem;
 		overflow: hidden;
 		height: 28rem;
 		object-fit: contain;
 		background-color: $c-n-light-grayish-blue;
+
+		@media screen and (max-width: $tablet) {
+			border-radius: unset;
+			height: 19rem;
+			object-fit: cover;
+			object-position: center;
+		}
 	}
 
 	&__thumbnail-container {
 		display: flex;
+
+		@media screen and (max-width: $tablet) {
+			display: none;
+		}
 	}
 
 	&__thumbnail {

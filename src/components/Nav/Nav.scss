@@ -9,6 +9,11 @@
 	border-color: $c-n-light-grayish-blue;
 	position: relative;
 
+	@media screen and (max-width: $tablet) {
+		height: 4rem;
+		border: none;
+	}
+
 	&__logo {
 		flex-shrink: 0;
 	}
@@ -47,11 +52,15 @@
 	}
 
 	&__avatar {
-		max-width: 3rem;
+		width: 3rem;
 		aspect-ratio: 1;
 		flex-shrink: 0;
 		border-radius: 50%;
 		cursor: pointer;
+
+		@media screen and (max-width: $tablet) {
+			width: 1.5rem;
+		}
 
 		&:hover {
 			outline: 2px solid $c-p-orange;
@@ -62,6 +71,10 @@
 		max-width: 2.5rem;
 		min-width: 0.5rem;
 		flex-grow: 1;
+
+		@media screen and (max-width: $tablet) {
+			max-width: 1rem;
+		}
 	}
 
 	&__menu-desktop {
@@ -77,14 +90,24 @@
 
 	&__open {
 		display: none;
+
 		@media screen and (max-width: $tablet) {
 			display: inline-block;
 			background-color: transparent;
 			border: none;
+			color: $c-n-dark-grayish-blue;
 			cursor: pointer;
-			max-width: 3rem;
-			min-width: 2rem;
-			width: 100%;
+			width: 1.5rem;
+			height: min-content;
+			flex-shrink: 0;
+		}
+
+		& + .nav__spacer {
+			display: none;
+
+			@media screen and (max-width: $tablet) {
+				display: unset;
+			}
 		}
 	}
 }
@@ -112,11 +135,15 @@
 		background-color: transparent;
 		border: none;
 		width: 1.5rem;
-		height: 7rem;
-		margin-bottom: -1.5rem;
+		height: 1.5rem;
+		margin: 2.75rem 0 1.25rem;
 		display: grid;
 		align-content: center;
 		cursor: pointer;
+
+		@media screen and (max-width: $tablet) {
+			margin: 1.5rem 0 0.5rem;
+		}
 	}
 
 	&__background {

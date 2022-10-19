@@ -3,12 +3,20 @@
 .description {
 	flex-basis: 28rem;
 
+	@media screen and (max-width: $tablet) {
+		flex-basis: unset;
+	}
+
 	&__company {
 		text-transform: uppercase;
 		font-size: 0.8rem;
 		letter-spacing: 0.25ch;
 		color: $c-p-orange;
 		margin-bottom: 1rem;
+
+		@media screen and (max-width: $tablet) {
+			font-size: 0.75rem;
+		}
 	}
 
 	&__product {
@@ -17,17 +25,30 @@
 		color: $c-n-very-vark-blue;
 		line-height: 1.8ch;
 		margin-bottom: 2rem;
+
+		@media screen and (max-width: $tablet) {
+			font-size: 1.8rem;
+			margin-bottom: 1rem;
+		}
 	}
 
 	&__text {
 		color: $c-n-dark-grayish-blue;
 		margin-bottom: 2rem;
+
+		@media screen and (max-width: $tablet) {
+			font-size: 0.95rem;
+			margin-bottom: 1rem;
+		}
 	}
 
 	&__button-container {
 		display: flex;
-		flex-wrap: wrap;
 		gap: 1rem;
+
+		@media screen and (max-width: $mobile) {
+			flex-direction: column;
+		}
 	}
 }
 
@@ -54,6 +75,11 @@
 		flex-basis: 100%;
 		color: $c-n-dark-grayish-blue;
 		text-decoration: line-through;
+
+		@media screen and (max-width: $tablet) {
+			flex-basis: unset;
+			margin-left: auto;
+		}
 	}
 }
 
@@ -71,12 +97,9 @@
 		border: none;
 		background-color: transparent;
 		color: $c-p-orange;
-		padding: 0 0.5rem;
+		width: 1.25rem;
 		height: 100%;
-		min-width: 2rem;
-		flex-grow: 1;
-		display: grid;
-		align-content: center;
+		aspect-ratio: 1;
 
 		&:first-of-type {
 			justify-items: left;

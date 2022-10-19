@@ -6,7 +6,7 @@
 }
 
 .app {
-	padding: 0 1.5rem;
+	padding: 0 1.5rem 3rem;
 }
 
 .main {
@@ -15,8 +15,19 @@
 	align-items: center;
 	padding-top: 5rem;
 
+	@media screen and (max-width: $tablet) {
+		padding-top: unset;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 1.5rem;
+	}
+
 	&__spacer {
 		min-width: 2rem;
 		flex-grow: 1;
+
+		@media screen and (max-width: $tablet) {
+			display: none;
+		}
 	}
 }
