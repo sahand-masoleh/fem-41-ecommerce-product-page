@@ -22,8 +22,6 @@
 		@media screen and (max-width: $tablet) {
 			border-radius: unset;
 			height: 19rem;
-			object-fit: cover;
-			object-position: center;
 		}
 	}
 
@@ -33,6 +31,46 @@
 		aspect-ratio: 1;
 		position: relative;
 		left: var(--left, 0);
+
+		@media screen and (max-width: $tablet) {
+			object-fit: cover;
+			min-width: 100%;
+		}
+	}
+
+	&__control {
+		display: none;
+
+		@media screen and (max-width: $tablet) {
+			display: unset;
+			position: absolute;
+			height: 2.5rem;
+			aspect-ratio: 1;
+			padding: 0.75rem;
+			background-color: $c-n-white;
+			color: $c-n-very-vark-blue;
+			border: none;
+			border-radius: 50%;
+			top: 50%;
+			translate: 0 -50%;
+			margin: 0 1rem;
+
+			&:first-of-type {
+				left: 0;
+			}
+
+			&:last-of-type {
+				right: 0;
+			}
+
+			&:hover {
+				cursor: pointer;
+			}
+
+			&[hidden] {
+				display: none;
+			}
+		}
 	}
 
 	&__thumbnail-container {
