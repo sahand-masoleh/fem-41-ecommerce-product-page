@@ -1,6 +1,5 @@
 import "./Gallery.scss";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
 import { products } from "@root/productList";
 const PRODUCT = products[0];
 
@@ -12,8 +11,9 @@ function Gallery() {
 	}
 
 	const imagesMap = [];
+	const thumbnailsMap = [];
 	for (let i = 0; i < PRODUCT.images.length; i++) {
-		imagesMap.push(
+		thumbnailsMap.push(
 			<Thumbnail
 				key={i}
 				url={PRODUCT.images[i].thumbnail}
@@ -22,17 +22,20 @@ function Gallery() {
 				isLast={i === PRODUCT.images.length - 1}
 			/>
 		);
+		imagesMap.push(
+			<img
+				key={i}
+				src={PRODUCT.images[i].large}
+				alt=""
+				className="gallery__large"
+				style={{ "--left": `-${active * 100}%` } as React.CSSProperties}
+			/>
+		);
 	}
 	return (
 		<section className="gallery">
-			<div className="gallery__active image">
-				<motion.img
-					src={PRODUCT.images[active].large}
-					alt=""
-					className="image__img"
-				/>
-			</div>
-			<div className="gallery__thumbnail-container">{imagesMap}</div>
+			<div className="gallery__carousel image">{imagesMap}</div>
+			<div className="gallery__thumbnail-container">{thumbnailsMap}</div>
 		</section>
 	);
 }

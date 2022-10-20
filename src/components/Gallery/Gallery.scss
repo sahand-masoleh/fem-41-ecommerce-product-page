@@ -11,12 +11,13 @@
 		margin: 0 -1.5rem;
 	}
 
-	&__active {
+	&__carousel {
 		border-radius: 1rem;
 		overflow: hidden;
 		height: 28rem;
-		object-fit: contain;
 		background-color: $c-n-light-grayish-blue;
+		display: flex;
+		position: relative;
 
 		@media screen and (max-width: $tablet) {
 			border-radius: unset;
@@ -24,6 +25,14 @@
 			object-fit: cover;
 			object-position: center;
 		}
+	}
+
+	&__large {
+		transition: left 0.25s linear;
+		object-fit: contain;
+		aspect-ratio: 1;
+		position: relative;
+		left: var(--left, 0);
 	}
 
 	&__thumbnail-container {

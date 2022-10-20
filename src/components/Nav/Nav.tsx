@@ -1,6 +1,6 @@
 /// <reference types="vite-plugin-svgr/client" />
 import "./Nav.scss";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CartContext, CartContextType } from "@root/contexts/CartContext";
 import links from "./links";
@@ -33,15 +33,14 @@ function Nav() {
 	const linksMapDesktop = [];
 	for (let link of links) {
 		linksMapDesktop.push(
-			<>
+			<React.Fragment key={link}>
 				<NavLink
-					key={link}
 					text={link}
 					isHovered={hovered === link}
 					onHover={() => handleHover(link)}
 				/>
 				<div className="nav__spacer"></div>
-			</>
+			</React.Fragment>
 		);
 	}
 
