@@ -1,7 +1,6 @@
 import "./Toast.scss";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { CSSProperties, useEffect, useRef, useState } from "react";
 
 export type messageType = { text: string; timeStamp: number };
 
@@ -10,24 +9,13 @@ interface Props {
 }
 
 function Toast({ messages }: Props) {
-	const heightRef = useRef<HTMLDivElement | null>(null);
-	const [height, setHeight] = useState(0);
-
-	useEffect(() => {
-		setHeight(heightRef.current?.scrollHeight || 0);
-	}, [messages]);
-
 	const messagesMap = [];
 	for (let message of messages) {
 		messagesMap.push(<Message key={message.timeStamp} text={message.text} />);
 	}
 
 	return createPortal(
-		<motion.div
-			className="toast-container"
-			ref={heightRef}
-			style={{ "--height": `${height}px` } as CSSProperties}
-		>
+		<motion.div className="toast-container">
 			<AnimatePresence>{messagesMap}</AnimatePresence>
 		</motion.div>,
 		document.body
@@ -36,12 +24,31 @@ function Toast({ messages }: Props) {
 
 export default Toast;
 
+const variants = {
+	initial: {
+		fontSize: 0,
+		padding: 0,
+		marginBottom: 0,
+	},
+	animate: {
+		fontSize: "1rem",
+		padding: "1rem",
+		marginBottom: "1rem",
+	},
+	exit: {
+		fontSize: 0,
+		padding: 0,
+		marginBottom: 0,
+	},
+};
+
 function Message({ text }: { text: string }) {
 	return (
 		<motion.div
-			initial={{ opacity: 0, y: "-100%" }}
-			animate={{ opacity: 1, y: 0 }}
-			exit={{ opacity: 0 }}
+			variants={variants}
+			initial="initial"
+			animate="animate"
+			exit="exit"
 			transition={{ bounce: false }}
 			className="toast__message"
 		>

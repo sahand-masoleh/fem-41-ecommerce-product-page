@@ -1,8 +1,8 @@
 import "./Cart.scss";
 import { useContext } from "react";
 import { createPortal } from "react-dom";
-import { CartContext, CartContextType } from "@root/contexts/CartContext";
-import useToast, { MESSAGES } from "@root/hooks/useToast";
+import { CartContext, CartContextType } from "@contexts/CartContext";
+import useToast, { MESSAGES } from "@hooks/useToast";
 import { products } from "@root/productList";
 import { ReactComponent as DeleteIcon } from "@assets/icon-delete.svg";
 const PRODUCT = products[0];
@@ -21,7 +21,7 @@ function Cart({ handleOpen }: Props) {
 		useContext<CartContextType | undefined>(CartContext) || {};
 	const showToast = useToast();
 
-	function handleCheckout() {
+	function handleMock() {
 		showToast && showToast(MESSAGES.MOCK);
 	}
 
@@ -53,7 +53,7 @@ function Cart({ handleOpen }: Props) {
 								<DeleteIcon className="image__img" />
 							</button>
 						</div>
-						<button className="cart__checkout" onClick={handleCheckout}>
+						<button className="cart__checkout" onClick={handleMock}>
 							checkout
 						</button>
 					</>

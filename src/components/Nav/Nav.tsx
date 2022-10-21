@@ -2,7 +2,8 @@
 import "./Nav.scss";
 import React, { useContext, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CartContext, CartContextType } from "@root/contexts/CartContext";
+import { CartContext, CartContextType } from "@contexts/CartContext";
+import useToast, { MESSAGES } from "@hooks/useToast";
 import links from "./links";
 import Cart from "./Cart";
 import MobileMenu from "./MobileMenu";
@@ -14,6 +15,7 @@ function Nav() {
 	const [isCartOpen, setIsCartOpen] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [hovered, setHovered] = useState<string | null>(null);
+	const showToast = useToast();
 
 	useEffect(() => {
 		const body = document.querySelector("body");
@@ -39,6 +41,10 @@ function Nav() {
 		}
 	}
 
+	function handleMock() {
+		showToast && showToast(MESSAGES.MOCK);
+	}
+
 	const linksMapDesktop = [];
 	for (let link of links) {
 		linksMapDesktop.push(
@@ -47,6 +53,7 @@ function Nav() {
 					text={link}
 					isHovered={hovered === link}
 					onHover={() => handleHover(link)}
+					onClick={handleMock}
 				/>
 				<div className="nav__spacer"></div>
 			</React.Fragment>
@@ -77,13 +84,13 @@ function Nav() {
 				<CartIcon className="image__img" />
 			</button>
 			<div className="nav__spacer"></div>
-			<div className="nav__avatar image">
+			<button className="nav__avatar image" onClick={handleMock}>
 				<img
 					src="./images/image-avatar.png"
 					alt="user avatar"
 					className="image__img"
 				/>
-			</div>
+			</button>
 			{isCartOpen && <Cart handleOpen={handleOpen} />}
 			<AnimatePresence>
 				{isMenuOpen && <MobileMenu handleClose={() => setIsMenuOpen(false)} />}
@@ -98,11 +105,12 @@ interface Props {
 	text: string;
 	isHovered: boolean;
 	onHover: () => void;
+	onClick: () => void;
 }
 
-function NavLink({ text, isHovered, onHover }: Props) {
+function NavLink({ text, isHovered, onHover, onClick }: Props) {
 	return (
-		<div className="nav__link-wrapper">
+		<div className="nav__link-wrapper" onClick={onClick}>
 			<a href="#" className="nav__link" onMouseEnter={onHover}>
 				{text}
 			</a>

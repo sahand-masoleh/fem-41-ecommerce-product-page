@@ -1,17 +1,26 @@
 import "./MobileMenu.scss";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import useToast, { MESSAGES } from "@hooks/useToast";
 import links from "./links";
 import { ReactComponent as CloseIcon } from "@assets/icon-close.svg";
 
-interface Props {
+interface MobileMenuProps {
 	handleClose: () => void;
 }
 
-function MobileMenu({ handleClose }: Props) {
+function MobileMenu({ handleClose }: MobileMenuProps) {
+	const showToast = useToast();
+
+	function handleMock() {
+		showToast && showToast(MESSAGES.MOCK);
+	}
+
 	const linksMapMobile = [];
 	for (let link of links) {
-		linksMapMobile.push(<NavLink key={link} text={link} />);
+		linksMapMobile.push(
+			<NavLink key={link} text={link} onClick={handleMock} />
+		);
 	}
 	return createPortal(
 		<>
@@ -44,9 +53,14 @@ function MobileMenu({ handleClose }: Props) {
 
 export default MobileMenu;
 
-function NavLink({ text }: { text: string }) {
+interface NavLinkProps {
+	text: string;
+	onClick: () => void;
+}
+
+function NavLink({ text, onClick }: NavLinkProps) {
 	return (
-		<a href="#" className="menu__link">
+		<a href="#" className="menu__link" onClick={onClick}>
 			{text}
 		</a>
 	);

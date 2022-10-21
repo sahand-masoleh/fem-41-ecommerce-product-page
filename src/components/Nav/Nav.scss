@@ -28,6 +28,9 @@
 		color: $c-n-dark-grayish-blue;
 		text-decoration: none;
 		text-transform: capitalize;
+		height: 100%;
+		display: grid;
+		place-items: center;
 	}
 
 	&__underline {
@@ -70,6 +73,9 @@
 		aspect-ratio: 1;
 		flex-shrink: 0;
 		border-radius: 50%;
+		background-color: $c-n-light-grayish-blue;
+		object-fit: cover;
+		border: none;
 		cursor: pointer;
 
 		@media screen and (max-width: $tablet) {
