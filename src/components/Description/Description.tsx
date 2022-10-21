@@ -24,7 +24,7 @@ function Description() {
 	const { handleCart } =
 		useContext<CartContextType | undefined>(CartContext) || {};
 
-	const [quantity, setQuantity] = useState(0);
+	const [quantity, setQuantity] = useState(1);
 
 	function handleQuantity(num: -1 | 1) {
 		setQuantity((prev) => {

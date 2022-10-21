@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import useToast, { MESSAGES } from "@hooks/useToast";
 
 export interface CartContextType {
 	quantity: number;
@@ -11,12 +12,15 @@ export const CartContext = createContext<CartContextType | undefined>(
 
 export function CartContextProvider({ children }: { children: JSX.Element[] }) {
 	const [quantity, setQuantity] = useState(0);
+	const showToast = useToast();
 
 	function handleCart(num: number) {
 		if (num < 0) {
 			setQuantity(0);
+			showToast && showToast(MESSAGES.ADD);
 		} else {
 			setQuantity((prev) => prev + num);
+			showToast && showToast(MESSAGES.REMOVE);
 		}
 	}
 

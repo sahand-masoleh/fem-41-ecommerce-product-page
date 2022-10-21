@@ -22,7 +22,8 @@
 			"@components/*": ["./src/components/*"],
 			"@styles/*": ["./src/styles/*"],
 			"@assets/*": ["./src/assets/*"],
-			"@contexts/*": ["./src/contexts/*"]
+			"@contexts/*": ["./src/contexts/*"],
+			"@hooks/*": ["./src/hooks/*"]
 		}
 	},
 	"include": ["src"],

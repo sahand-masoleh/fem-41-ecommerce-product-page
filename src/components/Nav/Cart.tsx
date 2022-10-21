@@ -1,9 +1,10 @@
 import "./Cart.scss";
 import { useContext } from "react";
+import { createPortal } from "react-dom";
 import { CartContext, CartContextType } from "@root/contexts/CartContext";
+import useToast, { MESSAGES } from "@root/hooks/useToast";
 import { products } from "@root/productList";
 import { ReactComponent as DeleteIcon } from "@assets/icon-delete.svg";
-import { createPortal } from "react-dom";
 const PRODUCT = products[0];
 
 const priceFormatter = new Intl.NumberFormat("en-US", {
@@ -18,6 +19,11 @@ interface Props {
 function Cart({ handleOpen }: Props) {
 	const { quantity, handleCart } =
 		useContext<CartContextType | undefined>(CartContext) || {};
+	const showToast = useToast();
+
+	function handleCheckout() {
+		showToast && showToast(MESSAGES.MOCK);
+	}
 
 	const price = priceFormatter.format(PRODUCT.price * PRODUCT.discount);
 	const total = priceFormatter.format(
@@ -47,7 +53,9 @@ function Cart({ handleOpen }: Props) {
 								<DeleteIcon className="image__img" />
 							</button>
 						</div>
-						<button className="cart__checkout">checkout</button>
+						<button className="cart__checkout" onClick={handleCheckout}>
+							checkout
+						</button>
 					</>
 				) : (
 					<div className="cart__empty">Your cart is empty.</div>

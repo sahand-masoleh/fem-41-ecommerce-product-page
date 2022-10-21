@@ -1,6 +1,6 @@
 /// <reference types="vite-plugin-svgr/client" />
 import "./Nav.scss";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CartContext, CartContextType } from "@root/contexts/CartContext";
 import links from "./links";
@@ -14,6 +14,15 @@ function Nav() {
 	const [isCartOpen, setIsCartOpen] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [hovered, setHovered] = useState<string | null>(null);
+
+	useEffect(() => {
+		const body = document.querySelector("body");
+		if (isMenuOpen && body) {
+			body.style.overflow = "hidden";
+		} else if (!isMenuOpen && body) {
+			body.style.overflow = "unset";
+		}
+	}, [isMenuOpen]);
 
 	const { quantity } =
 		useContext<CartContextType | undefined>(CartContext) || {};
@@ -76,7 +85,9 @@ function Nav() {
 				/>
 			</div>
 			{isCartOpen && <Cart handleOpen={handleOpen} />}
-			{isMenuOpen && <MobileMenu handleClose={() => setIsMenuOpen(false)} />}
+			<AnimatePresence>
+				{isMenuOpen && <MobileMenu handleClose={() => setIsMenuOpen(false)} />}
+			</AnimatePresence>
 		</nav>
 	);
 }

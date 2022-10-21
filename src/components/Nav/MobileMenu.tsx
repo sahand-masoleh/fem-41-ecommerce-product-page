@@ -1,6 +1,7 @@
 import "./MobileMenu.scss";
-import links from "./links";
 import { createPortal } from "react-dom";
+import { motion } from "framer-motion";
+import links from "./links";
 import { ReactComponent as CloseIcon } from "@assets/icon-close.svg";
 
 interface Props {
@@ -14,13 +15,28 @@ function MobileMenu({ handleClose }: Props) {
 	}
 	return createPortal(
 		<>
-			<div className="menu">
+			<motion.div
+				className="menu"
+				key="menu"
+				initial={{ x: "-100%" }}
+				animate={{ x: 0 }}
+				exit={{ x: "-100%" }}
+				transition={{ bounce: false }}
+			>
 				<button className="menu__close image" onClick={handleClose}>
 					<CloseIcon className="image__img" />
 				</button>
 				{linksMapMobile}
-			</div>
-			<div className="menu__background" onClick={handleClose}></div>
+			</motion.div>
+			<motion.div
+				className="menu__background"
+				onClick={handleClose}
+				key="background"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 0.5 }}
+				exit={{ opacity: 0 }}
+				transition={{ bounce: false }}
+			></motion.div>
 		</>,
 		document.body
 	);
