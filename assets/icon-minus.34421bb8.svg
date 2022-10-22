@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   viewBox="0 0 12.000007 3.3320062"
+   id="svg1619"
+   width="12.000007"
+   height="3.3320062">
+  <defs
+     id="defs158">
+    <path
+       d="M 11.357,3.332 A 0.641,0.641 0 0 0 12,2.69 V 0.643 A 0.641,0.641 0 0 0 11.357,0 H 0.643 A 0.641,0.641 0 0 0 0,0.643 v 2.046 c 0,0.357 0.287,0.643 0.643,0.643 z"
+       id="a" />
+  </defs>
+  <use
+     fill="currentColor"
+     xlink:href="#a"
+     id="use1617" />
+</svg>
