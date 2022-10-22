@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { CSSProperties, useEffect } from "react";
 
-const TIMEOUT = 5000;
+const TIMEOUT = 3000;
 export type Message = { text: string; timeStamp: number };
 
 interface ToastContainerable {
@@ -38,19 +38,16 @@ const variants = {
 		fontSize: 0,
 		opacity: 0,
 		padding: 0,
-		marginBottom: 0,
 	},
 	animate: {
 		fontSize: "1rem",
 		opacity: 1,
 		padding: "1rem",
-		marginBottom: "1rem",
 	},
 	exit: {
 		fontSize: 0,
 		opacity: 0,
 		padding: 0,
-		marginBottom: 0,
 	},
 };
 
@@ -75,7 +72,6 @@ function Toast({ text, onClick }: Toastable) {
 			transition={{ bounce: false }}
 			className="toast__message"
 			onClick={onClick}
-			style={{ "--timeout": TIMEOUT + "ms" } as CSSProperties}
 		>
 			{text}
 		</motion.div>
