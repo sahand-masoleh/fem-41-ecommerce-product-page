@@ -1,17 +1,26 @@
 import "./Toast.scss";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { CSSProperties, useEffect } from "react";
 
-export type messageType = { text: string; timeStamp: number };
+const TIMEOUT = 5000;
+export type Message = { text: string; timeStamp: number };
 
-interface Props {
-	messages: messageType[];
+interface ToastContainerable {
+	messages: Message[];
+	removeToast: (timeStamp: number) => void;
 }
 
-function Toast({ messages }: Props) {
+function ToastContainer({ messages, removeToast }: ToastContainerable) {
 	const messagesMap = [];
 	for (let message of messages) {
-		messagesMap.push(<Message key={message.timeStamp} text={message.text} />);
+		messagesMap.push(
+			<Toast
+				key={message.timeStamp}
+				text={message.text}
+				onClick={() => removeToast(message.timeStamp)}
+			/>
+		);
 	}
 
 	return createPortal(
@@ -22,7 +31,7 @@ function Toast({ messages }: Props) {
 	);
 }
 
-export default Toast;
+export default ToastContainer;
 
 const variants = {
 	initial: {
@@ -42,7 +51,18 @@ const variants = {
 	},
 };
 
-function Message({ text }: { text: string }) {
+interface Toastable {
+	text: string;
+	onClick: () => void;
+}
+
+function Toast({ text, onClick }: Toastable) {
+	useEffect(() => {
+		setTimeout(() => {
+			onClick();
+		}, TIMEOUT);
+	}, []);
+
 	return (
 		<motion.div
 			variants={variants}
@@ -51,6 +71,8 @@ function Message({ text }: { text: string }) {
 			exit="exit"
 			transition={{ bounce: false }}
 			className="toast__message"
+			onClick={onClick}
+			style={{ "--timeout": TIMEOUT + "ms" } as CSSProperties}
 		>
 			{text}
 		</motion.div>

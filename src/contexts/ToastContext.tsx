@@ -1,27 +1,31 @@
 import { createContext, useState } from "react";
-import Toast, { messageType } from "@components/Toast/Toast";
-
-const TIMEOUT = 5000;
+import ToastContainer, { Message } from "@components/Toast/Toast";
 
 type showToastType = (text: string) => void;
 
 export const ToastContext = createContext<showToastType | undefined>(undefined);
 
 export function ToastContextProvider({ children }: { children: JSX.Element }) {
-	const [messages, setMessages] = useState<messageType[]>([]);
+	const [messages, setMessages] = useState<Message[]>([]);
 
 	function showToast(text: string) {
 		const timeStamp = Date.now();
 		setMessages((prevMessages) => [...prevMessages, { text, timeStamp }]);
-		setTimeout(() => {
-			setMessages((prevMessages) => prevMessages.slice(1));
-		}, TIMEOUT);
+	}
+
+	function removeToast(timeStamp: number) {
+		setMessages((prevMessages) => {
+			const neuMessages = [...prevMessages];
+			const index = neuMessages.findIndex((e) => e.timeStamp === timeStamp);
+			index !== -1 && neuMessages.splice(index, 1);
+			return neuMessages;
+		});
 	}
 
 	return (
 		<ToastContext.Provider value={showToast}>
 			{children}
-			<Toast messages={messages} />
+			<ToastContainer messages={messages} removeToast={removeToast} />
 		</ToastContext.Provider>
 	);
 }

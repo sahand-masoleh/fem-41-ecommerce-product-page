@@ -71,14 +71,14 @@ function Gallery() {
 
 export default Gallery;
 
-interface Props {
+interface Thumbnailable {
 	url: string;
 	onClick: () => void;
 	isActive: boolean;
 	isLast: boolean;
 }
 
-function Thumbnail({ url, onClick, isActive, isLast }: Props) {
+function Thumbnail({ url, onClick, isActive, isLast }: Thumbnailable) {
 	return (
 		<>
 			<div

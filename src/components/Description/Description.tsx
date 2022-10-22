@@ -1,7 +1,7 @@
 import "./Description.scss";
 import { useContext, useState } from "react";
 import { motion } from "framer-motion";
-import { CartContext, CartContextType } from "@contexts/CartContext";
+import { CartContext, CartContextable } from "@contexts/CartContext";
 import { products } from "@root/productList";
 import { ReactComponent as CartIcon } from "@assets/icon-cart.svg";
 import { ReactComponent as MinusIcon } from "@assets/icon-minus.svg";
@@ -22,7 +22,7 @@ const DISCOUNT = new Intl.NumberFormat("en-US", { style: "percent" }).format(
 
 function Description() {
 	const { handleCart } =
-		useContext<CartContextType | undefined>(CartContext) || {};
+		useContext<CartContextable | undefined>(CartContext) || {};
 
 	const [quantity, setQuantity] = useState(1);
 

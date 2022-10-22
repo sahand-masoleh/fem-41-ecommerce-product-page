@@ -5,11 +5,11 @@ import useToast, { MESSAGES } from "@hooks/useToast";
 import links from "./links";
 import { ReactComponent as CloseIcon } from "@assets/icon-close.svg";
 
-interface MobileMenuProps {
+interface MobileMenuable {
 	handleClose: () => void;
 }
 
-function MobileMenu({ handleClose }: MobileMenuProps) {
+function MobileMenu({ handleClose }: MobileMenuable) {
 	const showToast = useToast();
 
 	function handleMock() {
@@ -53,12 +53,12 @@ function MobileMenu({ handleClose }: MobileMenuProps) {
 
 export default MobileMenu;
 
-interface NavLinkProps {
+interface NavLinkable {
 	text: string;
 	onClick: () => void;
 }
 
-function NavLink({ text, onClick }: NavLinkProps) {
+function NavLink({ text, onClick }: NavLinkable) {
 	return (
 		<a href="#" className="menu__link" onClick={onClick}>
 			{text}

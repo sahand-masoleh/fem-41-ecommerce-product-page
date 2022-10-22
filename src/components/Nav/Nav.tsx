@@ -2,7 +2,7 @@
 import "./Nav.scss";
 import React, { useContext, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CartContext, CartContextType } from "@contexts/CartContext";
+import { CartContext, CartContextable } from "@contexts/CartContext";
 import useToast, { MESSAGES } from "@hooks/useToast";
 import links from "./links";
 import Cart from "./Cart";
@@ -27,7 +27,7 @@ function Nav() {
 	}, [isMenuOpen]);
 
 	const { quantity } =
-		useContext<CartContextType | undefined>(CartContext) || {};
+		useContext<CartContextable | undefined>(CartContext) || {};
 
 	function handleOpen() {
 		setIsCartOpen((prev) => !prev);
@@ -101,14 +101,14 @@ function Nav() {
 
 export default Nav;
 
-interface Props {
+interface NavLinkable {
 	text: string;
 	isHovered: boolean;
 	onHover: () => void;
 	onClick: () => void;
 }
 
-function NavLink({ text, isHovered, onHover, onClick }: Props) {
+function NavLink({ text, isHovered, onHover, onClick }: NavLinkable) {
 	return (
 		<div className="nav__link-wrapper" onClick={onClick}>
 			<a href="#" className="nav__link" onMouseEnter={onHover}>
