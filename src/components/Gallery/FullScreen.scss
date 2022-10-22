@@ -1,0 +1,19 @@
+@use "@styles/partials" as *;
+
+.fullscreen {
+	position: fixed;
+	inset: 0;
+	display: grid;
+	place-items: center;
+
+	&__wrapper {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__background {
+		position: absolute;
+		inset: 0;
+		background-color: $c-n-black-transparent;
+	}
+}

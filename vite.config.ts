@@ -34,4 +34,5 @@ export default defineConfig({
 			},
 		],
 	},
+	base: "/fem-41-ecommerce-product-page/",
 });

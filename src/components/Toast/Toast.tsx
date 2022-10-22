@@ -36,16 +36,19 @@ export default ToastContainer;
 const variants = {
 	initial: {
 		fontSize: 0,
+		opacity: 0,
 		padding: 0,
 		marginBottom: 0,
 	},
 	animate: {
 		fontSize: "1rem",
+		opacity: 1,
 		padding: "1rem",
 		marginBottom: "1rem",
 	},
 	exit: {
 		fontSize: 0,
+		opacity: 0,
 		padding: 0,
 		marginBottom: 0,
 	},

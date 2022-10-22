@@ -1,27 +1,47 @@
 @use "@styles/partials" as *;
 
 .gallery {
-	flex-basis: 28rem;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
+	flex-basis: var(--size);
 
 	@media screen and (max-width: $tablet) {
 		flex-basis: unset;
-		margin: 0 -1.5rem;
+	}
+
+	&--normal {
+		--size: 28rem;
+
+		@media screen and (max-width: $tablet) {
+			margin: 0 -1.5rem;
+		}
+	}
+
+	&--in-modal {
+		--size: 34rem;
 	}
 
 	&__carousel {
 		border-radius: 1rem;
 		overflow: hidden;
-		height: 28rem;
 		background-color: $c-n-light-grayish-blue;
 		display: flex;
 		position: relative;
 
+		&--normal {
+			max-height: var(--size);
+			@media screen and (max-width: $tablet) {
+				height: 19rem;
+			}
+		}
+
+		&--in-modal {
+			max-height: 100vw;
+		}
+
 		@media screen and (max-width: $tablet) {
 			border-radius: unset;
-			height: 19rem;
 		}
 	}
 
@@ -39,45 +59,67 @@
 	}
 
 	&__control {
-		display: none;
+		position: absolute;
+		height: 3rem;
+		aspect-ratio: 1;
+		padding: 1rem;
+		background-color: $c-n-white;
+		color: $c-n-very-vark-blue;
+		border: none;
+		border-radius: 50%;
+		top: 50%;
+		translate: 0 -50%;
+		margin: 0 1rem;
+		opacity: 0.5;
 
 		@media screen and (max-width: $tablet) {
-			display: unset;
-			position: absolute;
 			height: 2.5rem;
-			aspect-ratio: 1;
 			padding: 0.75rem;
-			background-color: $c-n-white;
-			color: $c-n-very-vark-blue;
-			border: none;
-			border-radius: 50%;
-			top: 50%;
-			translate: 0 -50%;
-			margin: 0 1rem;
+		}
 
-			&:first-of-type {
-				left: 0;
-			}
+		&--normal {
+			display: none;
 
-			&:last-of-type {
-				right: 0;
+			@media screen and (max-width: $tablet) {
+				display: unset;
 			}
+		}
 
-			&:hover {
-				cursor: pointer;
-			}
+		&:first-of-type {
+			left: 0;
+		}
 
-			&[hidden] {
-				display: none;
-			}
+		&:last-of-type {
+			right: 0;
+		}
+
+		&:hover {
+			cursor: pointer;
+			color: $c-p-orange;
+		}
+
+		&[hidden] {
+			display: none;
 		}
 	}
 
 	&__thumbnail-container {
 		display: flex;
 
-		@media screen and (max-width: $tablet) {
-			display: none;
+		&--normal {
+			@media screen and (max-width: $tablet) {
+				display: none;
+			}
+		}
+
+		&--in-modal {
+			max-width: 28rem;
+			width: 100%;
+			margin: 0 auto;
+
+			@media screen and (max-width: $tablet) {
+				padding: 0 1.5rem;
+			}
 		}
 	}
 

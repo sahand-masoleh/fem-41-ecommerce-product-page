@@ -1,15 +1,26 @@
 import "./Gallery.scss";
 import React, { useState } from "react";
+import FullScreen from "./FullScreen";
 import { ReactComponent as NextIcon } from "@assets/icon-next.svg";
 import { ReactComponent as PreviousIcon } from "@assets/icon-previous.svg";
 import { products } from "@root/productList";
 const PRODUCT = products[0];
 
-function Gallery() {
-	const [active, setActive] = useState(0);
+interface Galleriable {
+	inModal?: boolean;
+	active?: number;
+}
+
+function Gallery({ inModal, active: initActive }: Galleriable) {
+	const [active, setActive] = useState(initActive ?? 0);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	function handleActive(id: number) {
 		setActive(id);
+	}
+
+	function handleModal() {
+		setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
 	}
 
 	function handleNavigate(direction: 1 | -1) {
@@ -42,30 +53,43 @@ function Gallery() {
 				alt=""
 				className="gallery__large"
 				style={{ "--left": `-${active * 100}%` } as React.CSSProperties}
+				onClick={!inModal ? handleModal : undefined}
 			/>
 		);
 	}
+
+	const modifier = inModal ? "in-modal" : "normal";
+
 	return (
-		<section className="gallery">
-			<div className="gallery__carousel image">
-				{imagesMap}
-				<button
-					className="gallery__control image"
-					onClick={() => handleNavigate(-1)}
-					hidden={active <= 0}
+		<>
+			<section className={`gallery gallery--${modifier}`}>
+				<div
+					className={`gallery__carousel gallery__carousel--${modifier} image`}
 				>
-					<PreviousIcon className="image__img" />
-				</button>
-				<button
-					className="gallery__control"
-					onClick={() => handleNavigate(1)}
-					hidden={active >= PRODUCT.images.length - 1}
+					{imagesMap}
+					<button
+						className={`gallery__control gallery__control--${modifier} image`}
+						onClick={() => handleNavigate(-1)}
+						hidden={active <= 0}
+					>
+						<PreviousIcon className="image__img" />
+					</button>
+					<button
+						className={`gallery__control gallery__control--${modifier} image`}
+						onClick={() => handleNavigate(1)}
+						hidden={active >= PRODUCT.images.length - 1}
+					>
+						<NextIcon className="image__img" />
+					</button>
+				</div>
+				<div
+					className={`gallery__thumbnail-container gallery__thumbnail-container--${modifier}`}
 				>
-					<NextIcon className="image__img" />
-				</button>
-			</div>
-			<div className="gallery__thumbnail-container">{thumbnailsMap}</div>
-		</section>
+					{thumbnailsMap}
+				</div>
+			</section>
+			{isModalOpen && <FullScreen active={active} close={handleModal} />}
+		</>
 	);
 }
 
