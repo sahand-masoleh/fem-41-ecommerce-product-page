@@ -21,6 +21,24 @@ function App() {
 					</main>
 				</CartContextProvider>
 			</ToastContextProvider>
+			<div className="attribution">
+				Coded by{" "}
+				<a
+					href="https://www.frontendmentor.io/profile/sahand-masoleh"
+					target="_blank"
+					className="attribution__link"
+				>
+					Sahand Masoleh
+				</a>
+				. Challenge by{" "}
+				<a
+					href="https://www.frontendmentor.io"
+					target="_blank"
+					className="attribution__link"
+				>
+					frontendmentor.io
+				</a>
+			</div>
 		</div>
 	);
 }
