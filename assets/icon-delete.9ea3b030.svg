@@ -3,32 +3,7 @@
    width="14"
    height="16"
    version="1.1"
-   id="svg30"
-   sodipodi:docname="icon-delete.svg"
-   inkscape:version="1.2.1 (0f2f062aeb, 2022-09-21, custom)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview32"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     showgrid="false"
-     inkscape:zoom="25.40625"
-     inkscape:cx="8.7773678"
-     inkscape:cy="3.5621156"
-     inkscape:window-width="1878"
-     inkscape:window-height="1016"
-     inkscape:window-x="42"
-     inkscape:window-y="27"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg30" />
+   id="svg30">
   <defs
      id="defs26">
     <path
