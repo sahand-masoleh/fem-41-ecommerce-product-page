@@ -25,11 +25,11 @@
 	&__carousel {
 		border-radius: 1rem;
 		overflow: hidden;
-		background-color: $c-n-light-grayish-blue;
 		display: flex;
 		position: relative;
 
 		&--normal {
+			background-color: $c-n-light-grayish-blue;
 			max-height: var(--size);
 			@media screen and (max-width: $tablet) {
 				height: 19rem;
@@ -37,12 +37,17 @@
 		}
 
 		&--in-modal {
+			background-color: $c-n-very-vark-blue;
 			max-height: 100vw;
 		}
 
 		@media screen and (max-width: $tablet) {
 			border-radius: unset;
 		}
+	}
+
+	&__large-container {
+		display: flex;
 	}
 
 	&__large {

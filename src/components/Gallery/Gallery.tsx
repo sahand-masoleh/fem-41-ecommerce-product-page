@@ -1,10 +1,13 @@
 import "./Gallery.scss";
 import React, { useState } from "react";
+import { DraggableProps, motion, PanInfo } from "framer-motion";
 import FullScreen from "./FullScreen";
 import { ReactComponent as NextIcon } from "@assets/icon-next.svg";
 import { ReactComponent as PreviousIcon } from "@assets/icon-previous.svg";
 import { products } from "@root/productList";
 const PRODUCT = products[0];
+
+const SWIPE_CONFIDENCE_THRESHOLD = 10000;
 
 interface Galleriable {
 	inModal?: boolean;
@@ -23,7 +26,7 @@ function Gallery({ inModal, active: initActive }: Galleriable) {
 		setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
 	}
 
-	function handleNavigate(direction: 1 | -1) {
+	function handlePaginate(direction: 1 | -1) {
 		setActive((prevActive) => {
 			const neuActive = prevActive + direction;
 			if (neuActive < PRODUCT.images.length && neuActive >= 0) {
@@ -32,6 +35,16 @@ function Gallery({ inModal, active: initActive }: Galleriable) {
 				return prevActive;
 			}
 		});
+	}
+
+	function handleDrag(e: DragEvent, info: PanInfo) {
+		const { offset, velocity } = info;
+		const swipePower = Math.abs(offset.x) * velocity.x;
+		if (swipePower < -SWIPE_CONFIDENCE_THRESHOLD) {
+			handlePaginate(1);
+		} else if (swipePower > SWIPE_CONFIDENCE_THRESHOLD) {
+			handlePaginate(-1);
+		}
 	}
 
 	const imagesMap = [];
@@ -66,17 +79,25 @@ function Gallery({ inModal, active: initActive }: Galleriable) {
 				<div
 					className={`gallery__carousel gallery__carousel--${modifier} image`}
 				>
-					{imagesMap}
+					<motion.div
+						drag="x"
+						dragConstraints={{ left: 0, right: 0 }}
+						dragElastic={0.01}
+						onDragEnd={handleDrag}
+						className="gallery__large-container"
+					>
+						{imagesMap}
+					</motion.div>
 					<button
 						className={`gallery__control gallery__control--${modifier} image`}
-						onClick={() => handleNavigate(-1)}
+						onClick={() => handlePaginate(-1)}
 						hidden={active <= 0}
 					>
 						<PreviousIcon className="image__img" />
 					</button>
 					<button
 						className={`gallery__control gallery__control--${modifier} image`}
-						onClick={() => handleNavigate(1)}
+						onClick={() => handlePaginate(1)}
 						hidden={active >= PRODUCT.images.length - 1}
 					>
 						<NextIcon className="image__img" />
