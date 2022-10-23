@@ -80,6 +80,7 @@ function Nav() {
 				className="nav__cart image"
 				onClick={handleOpen}
 				data-count={quantity || null}
+				aria-label="open cart"
 			>
 				<CartIcon className="image__img" />
 			</button>

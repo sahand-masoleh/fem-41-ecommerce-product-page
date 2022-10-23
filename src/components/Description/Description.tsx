@@ -57,6 +57,7 @@ function Description() {
 						className="quantity__button image"
 						onClick={() => handleQuantity(-1)}
 						disabled={quantity < 1}
+						aria-label="decrease quantity"
 					>
 						<MinusIcon className="image__img" />
 					</button>
@@ -64,6 +65,7 @@ function Description() {
 					<button
 						className="quantity__button"
 						onClick={() => handleQuantity(1)}
+						aria-label="increase quantity"
 					>
 						<div className="quantity__icon image">
 							<PlusIcon className="image__img" />

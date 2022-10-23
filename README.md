@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Github repo](https://github.com/sahand-masoleh/fem-41-ecommerce-product-page)
-- Live Site URL: [Github pages](https://sahand-masoleh.github.io/fem-41-ecommerce-product-page/)
+- [Github repo](https://github.com/sahand-masoleh/fem-41-ecommerce-product-page)
+- [Live page](https://sahand-masoleh.github.io/fem-41-ecommerce-product-page/)
 
 ## Built with
 
@@ -42,5 +42,7 @@ Users should be able to:
 
 ## Author
 
-- Frontend Mentor - [@sahand-masoleh](https://www.frontendmentor.io/profile/sahand-masoleh)
-- Twitter - [@SahandMasoleh](https://twitter.com/SahandMasoleh)
+- [Portfolio](https://sahand-masoleh.github.io)
+- [Frontend Mentor](https://www.frontendmentor.io/profile/sahand-masoleh)
+- [Twitter](https://twitter.com/SahandMasoleh)
+- [LinkedIn](https://www.linkedin.com/in/sahand-masoleh-220045244)

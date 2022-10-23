@@ -21,7 +21,7 @@ function App() {
 					</main>
 				</CartContextProvider>
 			</ToastContextProvider>
-			<div className="attribution">
+			<footer className="attribution">
 				Coded by{" "}
 				<a
 					href="https://www.frontendmentor.io/profile/sahand-masoleh"
@@ -38,7 +38,7 @@ function App() {
 				>
 					frontendmentor.io
 				</a>
-			</div>
+			</footer>
 		</div>
 	);
 }
